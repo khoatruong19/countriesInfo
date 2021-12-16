@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {ThemeContextProvider} from "./context/ThemeContextProvider"
+import {RegionContextProvider} from "./context/RegionContextProvider"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import store from "./store/store"
+import {Provider} from "react-redux"
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeContextProvider>
+      <RegionContextProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </RegionContextProvider>
+    </ThemeContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
